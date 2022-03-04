@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "API node+Python para coleta e envio de cotacoes de moeda",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucastoupitzen/cotacao-moedas.git"
+  },
+  "author": "Lucas Ferracin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucastoupitzen/cotacao-moedas/issues"
+  },
+  "homepage": "https://github.com/lucastoupitzen/cotacao-moedas#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "consign": "^0.1.6",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  }
+}
