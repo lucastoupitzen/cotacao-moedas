@@ -21,6 +21,12 @@ module.exports = () => {
 
     listaResultados.push(childPythonEuro.stdout.toString())
 
+    // Procura cotacao libra
+
+    const childPythonLibra = spawnSync("python3", ["./scraping/scraping_libra.py"])
+
+    listaResultados.push(childPythonLibra.stdout.toString())
+
     for(resultado in listaResultados) {
         console.log(listaResultados[resultado])
         for(letra in listaResultados[resultado]) {
