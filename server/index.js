@@ -18,12 +18,10 @@ conexao.connect( async (erro) => {
 
             //execução periódica do scraping(Python)
 
-            // ordemScraping()
-            // setInterval(() => {
-            //     ordemScraping()
-            // }, 4000)
-
-           
+            ordemScraping()
+            setInterval(() => {
+                ordemScraping()
+            }, 60000)
         })
 
 
