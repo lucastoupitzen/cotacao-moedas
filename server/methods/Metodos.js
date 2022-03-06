@@ -4,15 +4,37 @@ class Metodos {
 
     atualizar(moeda, cotacao) {
 
-        const sql = `UPDATE Cotacoes SET cotNow = "${cotacao}" WHERE moeda = "${moeda}"`
+        let hora = new Date
 
-        conexao.query(sql, (erro, resultado) => {
-            if(erro) {
-                console.log(erro)
-            } else {
-                console.log(resultado)
-            }
-        })
+        // se está fora do horário comercial
+
+        if(hora.getHours() >= 17 || hora.getHours() < 9) {
+
+            const sql = `UPDATE Cotacoes SET cotDiaAnterior = "${cotacao}" WHERE moeda = "${moeda}"`
+
+            conexao.query(sql, (erro, resultado) => {
+                if(erro) {
+                    console.log(erro)
+                } else {
+                    console.log(resultado)
+                }
+            })
+
+        } else {
+
+            // se está dentro do horário comercial
+
+            const sql = `UPDATE Cotacoes SET cotNow = "${cotacao}" WHERE moeda = "${moeda}"`
+
+            conexao.query(sql, (erro, resultado) => {
+                if(erro) {
+                    console.log(erro)
+                } else {
+                    console.log(resultado)
+                }
+            })
+        }
+
 
     }
 

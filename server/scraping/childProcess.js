@@ -28,11 +28,15 @@ module.exports = () => {
     listaResultados.push(childPythonLibra.stdout.toString())
 
     for(resultado in listaResultados) {
-        console.log(listaResultados[resultado])
+        
         for(letra in listaResultados[resultado]) {
+
             if(listaResultados[resultado][letra] == "-"){
+
                 // capta a moeda passada na string
+
                 let moeda = listaResultados[resultado].substring(0, letra)
+                
                 // capta a cotacao passada na string
     
                 letra++

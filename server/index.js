@@ -14,6 +14,7 @@ conexao.connect( async (erro) => {
         Tabela.init(conexao)
 
         app.listen(3000, () => {
+            
             console.log("Servidor operando na porta 3000.")
 
             //execução periódica do scraping(Python)
