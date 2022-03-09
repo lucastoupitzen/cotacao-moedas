@@ -3,7 +3,7 @@ const conexao = require("./databaseConfig/conexao.js")
 const Tabela = require("./databaseConfig/Tabela.js")
 const ordemScraping = require("./scraping/childProcess.js")
 
-conexao.connect( async (erro) => {
+conexao.connect((erro) => {
     
     if(erro) {
         console.log(erro)
@@ -14,7 +14,7 @@ conexao.connect( async (erro) => {
         Tabela.init(conexao)
 
         app.listen(3000, () => {
-            
+
             console.log("Servidor operando na porta 3000.")
 
             //execução periódica do scraping(Python)
@@ -24,10 +24,6 @@ conexao.connect( async (erro) => {
                 ordemScraping()
             }, 60000)
         })
-
-
-
-        
 
     }
 

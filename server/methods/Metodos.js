@@ -60,6 +60,36 @@ class Metodos {
 
     }
 
+    enviarCotacao(moeda, res) {
+
+        const sql = `SELECT * FROM Cotacoes WHERE moeda ="${moeda}"`
+
+        conexao.query(sql, (erro, resultado) => {
+            if(erro) {
+                console.log("Erro ao enviar cotação")
+            } else {
+                let listaResposta = {
+                    "cotacao": this.ajustaResposta(resultado[0].cotNow),
+                    "cotacaoAnterior": this.ajustaResposta(resultado[0].cotDiaAnterior)
+                }
+                res.send(listaResposta)
+            }
+        })
+
+    }
+
+    // ajusta o retorno da tabela para número
+
+    ajustaResposta(retorno) {
+
+        let letrafinal = retorno.length - 1
+
+        const palavraRetornada = retorno.substring(0, letrafinal)
+
+        return Number(palavraRetornada.replace(",", "."))
+
+    }
+
 }
 
 module.exports = new Metodos
