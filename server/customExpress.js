@@ -10,6 +10,8 @@ module.exports = () => {
 
     app.use(bodyParser.json())
 
+    app.use(express.static("../public"))
+
     consign().include("routes").into(app)
 
     return app

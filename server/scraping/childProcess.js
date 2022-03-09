@@ -27,6 +27,8 @@ module.exports = () => {
 
     listaResultados.push(childPythonLibra.stdout.toString())
 
+    console.log(listaResultados)
+
     for(resultado in listaResultados) {
         
         for(letra in listaResultados[resultado]) {
