@@ -27,6 +27,18 @@ module.exports = () => {
 
     listaResultados.push(childPythonLibra.stdout.toString())
 
+    // Procura cotacao Bitcoin
+
+    const childPythonBitcoin = spawnSync("python3", ["./scraping/scraping_bitcoin.py"])
+
+    listaResultados.push(childPythonBitcoin.stdout.toString())
+
+    // Procura cotacao Yene
+
+    const childPythonYene = spawnSync("python3", ["./scraping/scraping_yene.py"])
+
+    listaResultados.push(childPythonYene.stdout.toString())
+
     console.log(listaResultados)
 
     for(resultado in listaResultados) {

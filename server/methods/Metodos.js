@@ -8,7 +8,7 @@ class Metodos {
 
         // se está fora do horário comercial
 
-        if(hora.getHours() >= 17 || hora.getHours() < 9) {
+        if(hora.getHours() == 23) {
 
             const sql = `UPDATE Cotacoes SET cotDiaAnterior = "${cotacao}" WHERE moeda = "${moeda}"`
 
@@ -20,21 +20,20 @@ class Metodos {
                 }
             })
 
-        } else {
-
-            // se está dentro do horário comercial
-
-            const sql = `UPDATE Cotacoes SET cotNow = "${cotacao}" WHERE moeda = "${moeda}"`
-
-            conexao.query(sql, (erro, resultado) => {
-                if(erro) {
-                    console.log(erro)
-                } else {
-                    console.log(resultado)
-                }
-            })
         }
 
+        // se está dentro do horário comercial
+
+        const sql = `UPDATE Cotacoes SET cotNow = "${cotacao}" WHERE moeda = "${moeda}"`
+
+        conexao.query(sql, (erro, resultado) => {
+            if(erro) {
+                console.log(erro)
+            } else {
+                console.log(resultado)
+            }
+        })
+        
 
     }
 
@@ -86,7 +85,8 @@ class Metodos {
 
         const palavraRetornada = retorno.substring(0, letrafinal)
 
-        return Number(palavraRetornada.replace(",", "."))
+
+        return Number(palavraRetornada.replace(".", "").replace(",", "."))
 
     }
 
